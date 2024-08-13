@@ -6,6 +6,22 @@ import { Section } from "shared/Section";
 import pic from '../../../images/Rishi.jpg';
 
 export const DefaultAboutMeSection = () => {
+  const resumeViewUrl = "https://drive.google.com/file/d/1OYMNdBjYnac0n126bGDTMgqtwvkPz7-J/view?usp=sharing";
+  const resumeDownloadUrl = "https://drive.google.com/uc?export=download&id=1OYMNdBjYnac0n126bGDTMgqtwvkPz7-J";
+
+  const handleResumeClick = () => {
+    // Open the resume in a new tab
+    window.open(resumeViewUrl, "_blank");
+
+    // Trigger the download immediately
+    const downloadLink = document.createElement("a");
+    downloadLink.href = resumeDownloadUrl;
+    downloadLink.download = "Rishwanth_Resume.pdf";
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  };
+
   return (
     <div className="flex flex-col lg:flex-row items-center justify-evenly lg:gap-0 gap-8">
       <Section id="about-me" headingText="Thakoor Rishwanth">
@@ -24,10 +40,7 @@ export const DefaultAboutMeSection = () => {
                 <GithubIcon />
               </IconButton>
             </Link>
-            <Button 
-              onClick={() => window.open("https://drive.google.com/file/d/1kIzj-fcX1KeN8TXdRpJ_wYTa_eEMJnWF/view?usp=sharing", "_blank")}
-              // size ="large"
-            >
+            <Button onClick={handleResumeClick}>
               Resume
             </Button>
           </div>
